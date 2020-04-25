@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/project-estimator/static/css/main.861201f5.chunk.css",
-    "main.js": "/project-estimator/static/js/main.8cee3fbe.chunk.js",
-    "main.js.map": "/project-estimator/static/js/main.8cee3fbe.chunk.js.map",
+    "main.js": "/project-estimator/static/js/main.4c64180a.chunk.js",
+    "main.js.map": "/project-estimator/static/js/main.4c64180a.chunk.js.map",
     "runtime-main.js": "/project-estimator/static/js/runtime-main.21b1b49e.js",
     "runtime-main.js.map": "/project-estimator/static/js/runtime-main.21b1b49e.js.map",
     "static/js/2.f6c8c520.chunk.js": "/project-estimator/static/js/2.f6c8c520.chunk.js",
     "static/js/2.f6c8c520.chunk.js.map": "/project-estimator/static/js/2.f6c8c520.chunk.js.map",
     "index.html": "/project-estimator/index.html",
-    "precache-manifest.11d00abeddb0914fd39209ffe2025e59.js": "/project-estimator/precache-manifest.11d00abeddb0914fd39209ffe2025e59.js",
+    "precache-manifest.6beafc8c90746780c960dd6bac299793.js": "/project-estimator/precache-manifest.6beafc8c90746780c960dd6bac299793.js",
     "service-worker.js": "/project-estimator/service-worker.js",
     "static/css/main.861201f5.chunk.css.map": "/project-estimator/static/css/main.861201f5.chunk.css.map",
     "static/js/2.f6c8c520.chunk.js.LICENSE.txt": "/project-estimator/static/js/2.f6c8c520.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.21b1b49e.js",
     "static/js/2.f6c8c520.chunk.js",
     "static/css/main.861201f5.chunk.css",
-    "static/js/main.8cee3fbe.chunk.js"
+    "static/js/main.4c64180a.chunk.js"
   ]
 }
