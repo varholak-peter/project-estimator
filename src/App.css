@@ -1,38 +1,119 @@
 .App {
+  background-color: white;
+  box-shadow: 0px 2px 20px -10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  min-height: 100vh;
+  padding: 10vh 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    margin: 0 auto;
+    padding: 10vh 40px;
+  }
+}
+
+.App h1 {
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h2 {
+  margin-bottom: 0.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+fieldset {
+  margin-bottom: 1.5rem !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MuiButton-fullWidth {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 250px !important;
+}
+
+.MuiButton-root.btn {
+  min-width: 150px;
+}
+
+.MuiButton-root.btn-small {
+  min-width: 110px;
+}
+
+.MuiContainer-root.wrapper {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.MuiContainer-root.row {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .MuiContainer-root.row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .MuiContainer-root.row.order {
+    flex-direction: row;
+    justify-content: start;
+  }
+}
+
+.MuiContainer-root.row.btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.MuiContainer-root.confirm-input {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.MuiContainer-root.confirm-input > *:first-child {
+  flex: 1;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  min-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .MuiContainer-root.confirm-input > *:first-child {
+    min-width: unset;
+  }
+}
+
+.MuiContainer-root.result-group {
+  margin-top: 2rem;
+}
+
+.MuiContainer-root.result-group > *:first-child {
+  font-weight: bold;
+}
+
+.MuiContainer-root.result-group > *:first-child:only-child {
+  display: none;
+}
+
+.MuiContainer-root.result {
+  margin-bottom: 2rem;
+}
+
+.MuiTypography-root.result-txt {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiTypography-root.result-txt > strong {
+  margin-left: auto;
 }

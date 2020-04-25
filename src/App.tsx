@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useReducer } from "react";
+import "./App.css";
+
+import { initialState, reducer } from "./reducer";
+
+import { Home, title } from "./Home";
+import { ProductInfo } from "./ProductInfo";
+import { ProjectInfo } from "./ProjectInfo";
+import { Results } from "./Results";
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    document.title = title;
+    // window.onbeforeunload = () => true;
+
+    if (state.$step === 3) {
+      window.onbeforeunload = null;
+    }
+
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, [state.$step]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home dispatch={dispatch} state={state} />
+      <ProjectInfo dispatch={dispatch} state={state} />
+      <ProductInfo dispatch={dispatch} state={state} />
+      <Results dispatch={dispatch} state={state} />
     </div>
   );
 }
