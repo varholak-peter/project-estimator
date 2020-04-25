@@ -148,27 +148,27 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
           <Result
             label="Setup"
             md={results.setup}
-            text={SetupTexts.getSetupText()}
+            text={SetupTexts.getSetupText(state)}
           />
           <Result
             label="Documentation"
             md={results.documentation}
-            text={DocumentationTexts.getDocumentationText()}
+            text={DocumentationTexts.getDocumentationText(state)}
           />
           <Result
             label="Typography"
             md={results.styleguide.typography}
-            text={StyleguideTexts.getTypographyText()}
+            text={StyleguideTexts.getTypographyText(state)}
           />
           <Result
             label="Layout"
             md={results.styleguide.layout}
-            text={StyleguideTexts.getLayoutText()}
+            text={StyleguideTexts.getLayoutText(state)}
           />
           <Result
             label="Forms"
             md={results.styleguide.forms}
-            text={StyleguideTexts.getFormsText()}
+            text={StyleguideTexts.getFormsText(state)}
           />
         </Container>
 
@@ -179,12 +179,12 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
           <Result
             label="Sign Up"
             md={results.authorization.sign_up}
-            text={AuthorizationTexts.getSignUpText()}
+            text={AuthorizationTexts.getSignUpText(state)}
           />
           <Result
             label="Sign In"
             md={results.authorization.sign_in}
-            text={AuthorizationTexts.getSignInText()}
+            text={AuthorizationTexts.getSignInText(state)}
           />
         </Container>
 
@@ -195,44 +195,44 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
           <Result
             label="Profile"
             md={results.pages.profile}
-            text={PagesTexts.getProfileText()}
+            text={PagesTexts.getProfileText(state)}
           />
           <Result
             label="Search"
             md={results.pages.search}
-            text={PagesTexts.getSearchText()}
+            text={PagesTexts.getSearchText(state)}
           />
           <Result
             label="Billing"
             md={results.pages.billing}
-            text={PagesTexts.getBillingText()}
+            text={PagesTexts.getBillingText(state)}
           />
           <Result
             label="About Us"
             md={results.pages.about_us}
-            text={PagesTexts.getAboutUsText()}
+            text={PagesTexts.getAboutUsText(state)}
           />
           <Result
             label="Contact Us"
             md={results.pages.contact_us}
-            text={PagesTexts.getContactUsText()}
+            text={PagesTexts.getContactUsText(state)}
           />
           <Result
             label="FAQ"
             md={results.pages.faq}
-            text={PagesTexts.getFAQText()}
+            text={PagesTexts.getFAQText(state)}
           />
           <Result
             label="Legal"
             md={results.pages.legal}
-            text={PagesTexts.getLegalText()}
+            text={PagesTexts.getLegalText(state)}
           />
           {Object.entries(results.pages.pages).map(([label, md]) => (
             <Result
               key={label}
               label={label}
               md={md}
-              text={PagesTexts.getPagesText()}
+              text={PagesTexts.getPagesText(state, label)}
             />
           ))}
         </Container>
@@ -244,34 +244,34 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
           <Result
             label="Search"
             md={results.features.search}
-            text={FeaturesTexts.getSearchText()}
+            text={FeaturesTexts.getSearchText(state)}
           />
           <Result
             label="Billing"
             md={results.features.billing}
-            text={FeaturesTexts.getBillingText()}
+            text={FeaturesTexts.getBillingText(state)}
           />
           <Result
             label="Analytics"
             md={results.features.analytics}
-            text={FeaturesTexts.getAnalyticsText()}
+            text={FeaturesTexts.getAnalyticsText(state)}
           />
           <Result
             label="SEO"
             md={results.features.seo}
-            text={FeaturesTexts.getSeoText()}
+            text={FeaturesTexts.getSeoText(state)}
           />
           <Result
             label="Browser Features"
             md={results.features.browser_features}
-            text={FeaturesTexts.getBrowserFeaturesText()}
+            text={FeaturesTexts.getBrowserFeaturesText(state)}
           />
           {Object.entries(results.features.features).map(([label, md]) => (
             <Result
               key={label}
               label={label}
               md={md}
-              text={FeaturesTexts.getFeaturesText()}
+              text={FeaturesTexts.getFeaturesText(state, label)}
             />
           ))}
         </Container>
@@ -283,12 +283,12 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
           <Result
             label="Admin"
             md={results.maintenance.admin}
-            text={MaintenanceTexts.getAdminText()}
+            text={MaintenanceTexts.getAdminText(state)}
           />
           <Result
             label="CMS"
             md={results.maintenance.cms}
-            text={MaintenanceTexts.getCMSText()}
+            text={MaintenanceTexts.getCMSText(state)}
           />
         </Container>
 
@@ -301,7 +301,7 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
               key={label}
               label={label}
               md={md}
-              text={UserFlowsTexts.getUserFlowsText()}
+              text={UserFlowsTexts.getUserFlowsText(state, label)}
             />
           ))}
         </Container>

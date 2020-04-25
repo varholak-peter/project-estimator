@@ -96,6 +96,14 @@ export const profile = (input: State) => {
     out += 1;
   }
 
+  if (input.billing_one_time) {
+    out += 1;
+  }
+
+  if (input.billing_subscription) {
+    out += 1;
+  }
+
   if (input.website === "presentational") {
     out = 0;
   }

@@ -13,6 +13,10 @@ export const admin = (input: State) => {
     out -= 2;
   }
 
+  if (input.website === "presentational") {
+    out -= 3;
+  }
+
   if (input.forms === "complex") {
     out += 1;
   }

@@ -10,7 +10,9 @@ export const documentation = (input: State) => {
     "month"
   );
 
-  if (input.product === "mvp") {
+  if (input.product === "poc") {
+    out = 0;
+  } else if (input.product === "mvp") {
     out += Math.round(durationInMonths / 3);
   } else if (input.product === "full_product") {
     out += 1 + Math.round(durationInMonths / 2.5);
