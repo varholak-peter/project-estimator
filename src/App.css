@@ -117,3 +117,11 @@ fieldset {
 .MuiTypography-root.result-txt > strong {
   margin-left: auto;
 }
+
+.MuiContainer-root > .MuiFormControl-root {
+  display: flex;
+}
+
+.MuiFormLabel-root + .MuiButtonBase-root {
+  margin-top: 1rem;
+}

@@ -12,6 +12,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
     window.onbeforeunload = () => true;
 
     if (state.$step === 3 || state.$step === 0) {

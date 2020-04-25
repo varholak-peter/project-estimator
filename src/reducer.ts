@@ -152,10 +152,6 @@ export const reducer = (state: State, { type, payload }: Action): State => {
     };
   }
 
-  if (type === "$step") {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
   const newState = {
     ...state,
     [type]: payload,
