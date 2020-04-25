@@ -89,8 +89,6 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
     if (state.$step === 3) {
       const calculation = calculate(state);
       const meta = getMeta(state, calculation);
-      console.log(calculation);
-      console.log(meta);
 
       setResults(calculation);
       setMeta(meta);

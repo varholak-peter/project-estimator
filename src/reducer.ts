@@ -140,8 +140,10 @@ export const initialState: State = {
 };
 
 export const reducer = (state: State, { type, payload }: Action): State => {
-  console.log(`Old State:`, state);
-  console.log(`Reducer update(${type}):`, payload);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`Old State:`, state);
+    console.log(`Reducer update(${type}):`, payload);
+  }
 
   if (type === "$$load_project") {
     return {
@@ -159,7 +161,9 @@ export const reducer = (state: State, { type, payload }: Action): State => {
     [type]: payload,
   };
 
-  console.log(`New state:`, newState);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(`New state:`, newState);
+  }
 
   projectMap.setItem<object>(newState.$name, newState);
 

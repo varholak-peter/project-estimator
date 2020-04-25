@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     window.onbeforeunload = () => true;
 
-    if (state.$step === 3) {
+    if (state.$step === 3 || state.$step === 0) {
       window.onbeforeunload = null;
     }
 

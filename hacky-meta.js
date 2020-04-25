@@ -15,6 +15,5 @@ fs.readFile("./build/index.html", "utf8", function (err, data) {
 
   fs.writeFile("./build/index.html", data, "utf8", function (err) {
     if (err) return console.log(err);
-    console.log("done");
   });
 });
