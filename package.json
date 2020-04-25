@@ -1,6 +1,6 @@
 {
   "name": "project-estimator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "homepage": "https://varholak-peter.github.io/project-estimator",
   "dependencies": {
@@ -26,9 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build && npm run hacky-meta",
-    "deploy": "gh-pages -d build",
-    "hacky-meta": "node hacky-meta.js"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
