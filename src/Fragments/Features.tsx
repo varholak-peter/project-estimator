@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Button,
   ButtonProps,
@@ -71,6 +71,24 @@ const Feature = ({
 
 export const Features = ({ dispatch, state }: FragmentProps) => {
   const [value, setValue] = useState("");
+
+  const addFeature = useCallback(() => {
+    dispatch({
+      type: "features",
+      payload: {
+        ...state.features,
+        [value]: {
+          cms_content: false,
+          name: value,
+          other_be: false,
+          strv_be: false,
+          type: "simple",
+        },
+      },
+    });
+    setValue("");
+  }, [dispatch, state.features, value]);
+
   return (
     <Container className="wrapper">
       <Typography variant="h5" component="h2">
@@ -123,27 +141,13 @@ export const Features = ({ dispatch, state }: FragmentProps) => {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            dispatch({
-              type: "features",
-              payload: {
-                ...state.features,
-                [value]: {
-                  cms_content: false,
-                  name: value,
-                  other_be: false,
-                  strv_be: false,
-                  type: "simple",
-                },
-              },
-            });
-            setValue("");
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              addFeature();
+            }
           }}
-        >
+        />
+        <Button variant="contained" color="primary" onClick={addFeature}>
           Add
         </Button>
       </Container>

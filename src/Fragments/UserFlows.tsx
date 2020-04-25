@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Button,
   ButtonProps,
@@ -27,6 +27,20 @@ const UserFlow = ({ onRemove, userFlow }: UserFlowProps) => (
 
 export const UserFlows = ({ dispatch, state }: FragmentProps) => {
   const [value, setValue] = useState("");
+
+  const addUserFlow = useCallback(() => {
+    dispatch({
+      type: "user_flows",
+      payload: {
+        ...state.user_flows,
+        [value]: {
+          name: value,
+        },
+      },
+    });
+    setValue("");
+  }, [dispatch, state.user_flows, value]);
+
   return (
     <Container
       className="wrapper"
@@ -59,23 +73,13 @@ export const UserFlows = ({ dispatch, state }: FragmentProps) => {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            dispatch({
-              type: "user_flows",
-              payload: {
-                ...state.user_flows,
-                [value]: {
-                  name: value,
-                },
-              },
-            });
-            setValue("");
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              addUserFlow();
+            }
           }}
-        >
+        />
+        <Button variant="contained" color="primary" onClick={addUserFlow}>
           Add
         </Button>
       </Container>

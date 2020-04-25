@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Button,
   ButtonProps,
@@ -52,6 +52,21 @@ const Page = ({ onChange, onRemove, page }: PageProps) => (
 
 export const Pages = ({ dispatch, state }: FragmentProps) => {
   const [value, setValue] = useState("");
+
+  const addPage = useCallback(() => {
+    dispatch({
+      type: "pages",
+      payload: {
+        ...state.pages,
+        [value]: {
+          name: value,
+          type: "static",
+        },
+      },
+    });
+    setValue("");
+  }, [dispatch, state.pages, value]);
+
   return (
     <Container className="wrapper">
       <Typography variant="h5" component="h2">
@@ -96,24 +111,13 @@ export const Pages = ({ dispatch, state }: FragmentProps) => {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            dispatch({
-              type: "pages",
-              payload: {
-                ...state.pages,
-                [value]: {
-                  name: value,
-                  type: "static",
-                },
-              },
-            });
-            setValue("");
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              addPage();
+            }
           }}
-        >
+        />
+        <Button variant="contained" color="primary" onClick={addPage}>
           Add
         </Button>
       </Container>

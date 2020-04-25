@@ -3,7 +3,7 @@ import "./App.css";
 
 import { initialState, reducer } from "./reducer";
 
-import { Home, title } from "./Home";
+import { Home } from "./Home";
 import { ProductInfo } from "./ProductInfo";
 import { ProjectInfo } from "./ProjectInfo";
 import { Results } from "./Results";
@@ -12,8 +12,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    document.title = title;
-    // window.onbeforeunload = () => true;
+    window.onbeforeunload = () => true;
 
     if (state.$step === 3) {
       window.onbeforeunload = null;

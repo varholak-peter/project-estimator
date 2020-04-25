@@ -26,6 +26,10 @@ export const Home = ({ dispatch, state }: FragmentProps) => {
   }, [setProjects]);
 
   const createNewProject = useCallback(async () => {
+    if (!value) {
+      return;
+    }
+
     await localForage.setItem<string[]>(
       "projects",
       Array.from(new Set([...projects, value]))
@@ -70,6 +74,12 @@ export const Home = ({ dispatch, state }: FragmentProps) => {
             variant="outlined"
             color="secondary"
             onClick={async () => {
+              const confirmed = window.confirm(
+                `Are you sure you want to delete project "${projectName}"?`
+              );
+              if (!confirmed) {
+                return;
+              }
               const newProjects = projects.filter(
                 (project) => project !== projectName
               );

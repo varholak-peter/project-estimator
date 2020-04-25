@@ -2,6 +2,7 @@
   "name": "project-estimator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://varholak-peter.github.io/project-estimator",
   "dependencies": {
     "@date-io/dayjs": "1.x",
     "@material-ui/core": "^4.9.11",
@@ -24,7 +25,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build && npm run hacky-meta",
+    "deploy": "gh-pages -d build",
+    "hacky-meta": "node hacky-meta.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
