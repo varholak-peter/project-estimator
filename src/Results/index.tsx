@@ -73,6 +73,34 @@ const Result = ({ label, md, text }: ResultProps) => {
   );
 };
 
+type ResultGroupProps = {
+  label: string;
+};
+
+const ResultGroup: React.FC<ResultGroupProps> = ({ children, label }) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  useEffect(() => {
+    setIsCollapsed(true);
+  }, []);
+
+  return (
+    <Container
+      className={`result-group ${isCollapsed ? "collapsed" : ""}`}
+      disableGutters
+    >
+      <Typography
+        variant="h5"
+        component="h2"
+        onClick={() => setIsCollapsed(!isCollapsed)}
+      >
+        {isCollapsed ? ">" : "v"} {label}
+      </Typography>
+      {children}
+    </Container>
+  );
+};
+
 export const Results = ({ dispatch, state }: FragmentProps) => {
   const [results, setResults] = useState<Output | null>(null);
   const [meta, setMeta] = useState<Meta | null>(null);
@@ -139,10 +167,7 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
 
         <Divider />
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            Bootstrapping
-          </Typography>
+        <ResultGroup label="Bootstrapping">
           <Result
             label="Setup"
             md={results.setup}
@@ -168,12 +193,9 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
             md={results.styleguide.forms}
             text={StyleguideTexts.getFormsText(state)}
           />
-        </Container>
+        </ResultGroup>
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            Authorization
-          </Typography>
+        <ResultGroup label="Authorization">
           <Result
             label="Sign Up"
             md={results.authorization.sign_up}
@@ -184,12 +206,9 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
             md={results.authorization.sign_in}
             text={AuthorizationTexts.getSignInText(state)}
           />
-        </Container>
+        </ResultGroup>
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            Pages
-          </Typography>
+        <ResultGroup label="Pages">
           <Result
             label="Profile"
             md={results.pages.profile}
@@ -233,12 +252,9 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
               text={PagesTexts.getPagesText(state, label)}
             />
           ))}
-        </Container>
+        </ResultGroup>
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            Features
-          </Typography>
+        <ResultGroup label="Features">
           <Result
             label="Search"
             md={results.features.search}
@@ -272,12 +288,9 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
               text={FeaturesTexts.getFeaturesText(state, label)}
             />
           ))}
-        </Container>
+        </ResultGroup>
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            Maintenance
-          </Typography>
+        <ResultGroup label="Maintenance">
           <Result
             label="Admin"
             md={results.maintenance.admin}
@@ -288,12 +301,9 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
             md={results.maintenance.cms}
             text={MaintenanceTexts.getCMSText(state)}
           />
-        </Container>
+        </ResultGroup>
 
-        <Container className="result-group" disableGutters>
-          <Typography variant="h5" component="h2">
-            User Flows
-          </Typography>
+        <ResultGroup label="User Flows">
           {Object.entries(results.user_flows.user_flows).map(([label, md]) => (
             <Result
               key={label}
@@ -302,7 +312,7 @@ export const Results = ({ dispatch, state }: FragmentProps) => {
               text={UserFlowsTexts.getUserFlowsText(state, label)}
             />
           ))}
-        </Container>
+        </ResultGroup>
 
         <Container className="row btn-group" disableGutters>
           <Button
